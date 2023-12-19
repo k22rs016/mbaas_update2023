@@ -10,9 +10,17 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="keys.js"></script>
     <script>
+        $(function() {
+            setInterval(function() {
+                timer();
+            }, 500);
+        });
         let ncmb = new NCMB(appKey, clientKey);
         let UTdata = ncmb.DataStore("UpdateTest");
         let key = "score";
+        var active = false;
+        var startTime = 0;
+        var period = 0;
 
         function enterData() {
             let uTdata = new UTdata();
@@ -105,6 +113,39 @@
                 $("#display").html("update fail:" + JSON.stringify(error));
             })
         }
+
+        function Start() {
+
+        }
+
+        function Lap() {
+
+        }
+
+        function Set() {
+            active = false;
+            period = 300;
+            $("#time").html("経過時間：0");
+            $("#remain").html("残り時間： " + period);
+
+        }
+
+
+        function timer() {
+            if (active) {
+                var time = parseInt((new Date() - startTime) / 1000);
+                var rest = period - time;
+                $("#time").html("経過時間： " + time);
+                $("#remain").html("残り時間： " + rest);
+                analog(rest);
+            }
+
+            if (rest <= 0) {
+                active = false;
+                alarm();
+            }
+
+        }
     </script>
 </head>
 
@@ -128,6 +169,7 @@
     <div id="display" class="text-light bg-info">
         Results
     </div>
+    <div id="time">Time</div>
     <div id="remain">Remaining time</div>
     <div>
         <a onclick="Start()" class="btn btn-outline-secondary" role="button">Start</a>
