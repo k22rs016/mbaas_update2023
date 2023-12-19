@@ -117,8 +117,9 @@
     <div>
         <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch All</a>
         <a onclick="sortData()" class="btn btn-outline-secondary" role="button">Sort</a>
-        <a onclick="countData()" class="btn btn-outline-primary" role="button">Count</a>
+        <!--<a onclick="countData()" class="btn btn-outline-primary" role="button">Count</a>-->
         <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">Delete</a>
+
     </div>
     <div>
         <input type="text" id="update" placeholder="更新">
@@ -127,6 +128,14 @@
     <div id="display" class="text-light bg-info">
         Results
     </div>
+    <div id="remain">Remaining time</div>
+    <div>
+        <a onclick="Start()" class="btn btn-outline-secondary" role="button">Start</a>
+        <a onclick="Lap()" class="btn btn-outline-secondary" role="button">lap</a>
+        <a onclick="Set()" class="btn btn-outline-secondary" role="button">Set</a>
+
+    </div>
+
 </body>
 
 </html>
