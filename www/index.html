@@ -163,6 +163,25 @@
 
             }
 
+            function LapAll(){
+                let uTdata = new UTdata();
+                let value = parseInt($("#data").val());
+                var time = parseInt((new Date() - startTime) / 1000);
+                uTdata.set(T, time)
+                uTdata.set(key, value)
+                    .save()
+                    .then(function(results) {
+                        $("#display").removeClass();
+                        $("#display").addClass("bg-success");
+                        $("#display").html("enter success");
+                    })
+                    .catch(function(results) {
+                        $("#display").removeClass();
+                        $("#display").addClass("bg-warning");
+                        $("#display").html("enter fail");
+                    })
+            }
+
             function Set() {
                 active = false;
                 period = 20;
